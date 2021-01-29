@@ -1,0 +1,2 @@
+# Aprendizados da semana
+Nessa primeira semana de aula, aprendi sobre o que é um **terminal** e como utilizá-lo para dar comandos ao computador. Aprendi a diferença entre o **git** e o **github** e sobre como usar as duas ferramentas ao meu favor e, hoje, aprendi um pouco sobre como usar o **vscode**.
