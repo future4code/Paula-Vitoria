@@ -1,51 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Funcionários</title>
 </head>
+
 <body>
-    <p>Joaninha Acessórios</p>
-    
-    <a href="./index.html">Página Inicial</a>
-    <a href="./ctrl-estoque.html">Controle de Estoque</a>
-    <a href="./add-produto.html">Adicionar Produto</a>
-    <a href="./funcionarios.html">Funcionários</a>
+    <p id=nome-loja>Joaninha Acessórios</p>
 
-    <h2>Funcionários</h2>
+    <div class=navegacao>
+        <a href="./index.html">Página Inicial</a>
+        <a href="./ctrl-estoque.html">Controle de Estoque</a>
+        <a href="./add-produto.html">Adicionar Produto</a>
+        <a href="./funcionarios.html">Funcionários</a>
+    </div>
 
-    <table border="1">
-        <tr>
-            <th>Foto</th>
-            <th>Nome</th>
-            <th>Função</th>
-            <th>Email</th>
-        </tr>
+    <h2 id=tipo-pagina>Funcionárias</h2>
 
-        <tr>
-           <td><img src="./imagens/joana.jpg" alt="foto da funcionária Joana" width="200px" height="200px"></td>
-            <td>Joana da Silva Verdant</td>
-            <td>Gerente</td>
-            <td><a href="joana.jo@gmail.com">Enviar email para Joana</a></td>
-        </tr>
+    <div class=fotos-funcionarios>
+        <img src="./imagens/joana.jpg" alt="foto da funcionária Joana">
+        <p>Joana Linhares</p>
+        <img src="./imagens/joanete.jpg" alt="Foto da funcionária Joanete">
+        <p>Joanate Prazeres</p>
 
-        <tr>
-            <td><img src="./imagens/joanete.jpg" alt="Foto da funcionária Joanete" width="200px" height="200px"></td>
-            <td>Joanete Linhares Amarilis</td>
-            <td>Atendente</td>
-            <td><a href="Joanete.jo@gmail.com">Enviar email para Joanete</a></td>
-        </tr>
 
-        <tr>
-            <td><img src="./imagens/joice.jpg" alt="Foto da Funcionária Joice" width="200px" height="200px"></td>
-            <td>Joice Oliveira Vermilhis</td>
-            <td>Atendente</td>
-            <td><a href="Joice.jo@gmail.com">Enviar Email para Joice</a></td>
-        </tr>
+        <img src="./imagens/joice.jpg" alt="Foto da Funcionária Joice">
+        <p>Joice de Souza</p>
 
-    </table>
+    </div>
 
-    <p><strong>Para dúvidas, sugestões e/ou reclamações, mande-nos um email e teremos prazer em atendê-la!</strong></p>
+
+    <p id=duvidas><strong>Para dúvidas, sugestões e/ou reclamações, mande-nos um email e teremos prazer em atendê-la!</strong></p>
 </body>
+
+<div class = rodape></div>
+
 </html>
