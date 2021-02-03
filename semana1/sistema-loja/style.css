@@ -11,16 +11,23 @@ body{
 .navegacao{
    font-size: 20px;
    width:100%;
-}
+   height:50px ;
+   display:block;
+   background-color:#ff5f77;
+   text-align:center;
+  
 
+}
 .navegacao a{
     color:white;
-    display:inline-block;
     padding:20px;
     text-decoration:none;
     font-size: 20px;
-    background-color: #ff5f77;
+   
 }
+
+
+
 
 
 #redes-sociais{
@@ -91,3 +98,50 @@ label{
 #duvidas{
     color: #ff5f77;
 }
+
+.produtos-para-venda div{
+    display:inline-block;
+    margin:auto;
+    text-align: center;
+}
+
+.produtos-para-venda div img{
+    width:200px;
+    height:200px;
+    margin:20px;
+    border:1px solid lightgrey;
+}
+
+.banner-pagina-de-vendas img{
+    width:100%;
+    
+}
+
+.produtos-para-venda{
+    text-align: center;
+}
+.produtos-para-venda div p{
+    color:#ff5f77;
+}
+
+
+.historico-de-vendas tr:nth-child(even){
+    background-color:#ff5f77;
+
+}
+
+.historico-de-vendas tr:nth-child(odd){
+    background-color: #87cefa;
+
+}
+
+.lista-de-produtos img{
+    width:200px;
+    height:200px;
+    margin:20px;
+
+}
+.lista-de-produtos li{
+    list-style-type: none;
+}
+
