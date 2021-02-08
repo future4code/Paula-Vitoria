@@ -1,0 +1,126 @@
+                                    #água {
+                                        grid-column-start: 3
+                                    }
+                                    
+                                    #Poção {
+                                        grid-column-start: 5;
+                                    }
+                                    
+                                    #água {
+                                        grid-column-end: 4
+                                    }
+                                    
+                                    #água {
+                                        grid-column-end: 2;
+                                    }
+                                    
+                                    #água {
+                                        grid-column-end: -2
+                                    }
+                                    
+                                    #Poção {
+                                        grid-column-start: -3
+                                    }
+                                    
+                                    #água {
+                                        grid-column-end: span 2
+                                    }
+                                    
+                                    #água {
+                                        grid-column-end: span 5;
+                                    }
+                                    
+                                    #água {
+                                        grid-column-start: span 3
+                                    }
+                                    
+                                    #água {
+                                        grid-column: 4/6
+                                    }
+                                    
+                                    #água {
+                                        grid-column: span 3/5
+                                    }
+                                    
+                                    #água {
+                                        grid-row-start: 3
+                                    }
+                                    
+                                    #água {
+                                        grid-row: 3/6
+                                    }
+                                    
+                                    #Poção {
+                                        grid-row: 5;
+                                        grid-column: 2
+                                    }
+                                    
+                                    #água {
+                                        grid-column: 2/6;
+                                        grid-row: 1/6;
+                                    }
+                                    
+                                    #água {
+                                        grid-area: 1/ 2/ 4 /6;
+                                    }
+                                    
+                                    #water-2 {
+                                        grid-area: 2/3/5/6
+                                    }
+                                    
+                                    #Poção {
+                                        order: 5
+                                    }
+                                    
+                                    .Poção {
+                                        order: -1;
+                                    }
+                                    
+                                    #garden {
+                                        display: grid;
+                                        grid-template-columns: 50%;
+                                        grid-template-rows: 20% 20% 20% 20% 20%;
+                                    }
+                                    
+                                    #garden {
+                                        display: grid;
+                                        grid-template-columns: repeat(8, 12.5%);
+                                        grid-template-rows: 20% 20% 20% 20% 20%;
+                                    }
+                                    
+                                    #garden {
+                                        display: grade;
+                                        grid-template-columns: 100px 3em 40%;
+                                        grid-template-rows: 20% 20% 20% 20% 20%;
+                                    }
+                                    
+                                    #garden {
+                                        display: grid;
+                                        grid-template-columns: 100px 3em 40%;
+                                        grid-template-rows: 20% 20% 20% 20% 20%;
+                                    }
+                                    
+                                    #garden {
+                                        display: grade;
+                                        grid-template-columns: 50px repeat(3, 1fr) 50px;
+                                        grid-template-rows: 20% 20% 20% 20% 20%;
+                                    }
+                                    
+                                    #garden {
+                                        display: grid;
+                                        grid-template-columns: 75px 3fr 2fr
+                                    }
+                                    
+                                    #garden {
+                                        grid-template-rows: 50px 0 0 1fr;
+                                    }
+                                    
+                                    #garden {
+                                        display: grade;
+                                        grid-template: 60% / 200px;
+                                    }
+                                    
+                                    #garden {
+                                        display: grade;
+                                        grid-template: 1fr 50px / 1fr 4fr;
+                                    }
