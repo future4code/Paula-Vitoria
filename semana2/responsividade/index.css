@@ -1,0 +1,173 @@
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  
+    
+}
+
+.main-container{
+    display:flex;
+    flex-direction:column;
+    
+}
+
+.main-container div{
+    justify-content: center;
+}
+
+div {
+    border: 1px solid black;
+}
+
+
+#div-superior{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-row-gap: 20px;
+    grid-column-gap:20px;
+    padding:8px;
+    border:none;
+    height:20%;
+   
+}
+
+
+
+#div-superior div{
+    height: 100px;
+}
+
+
+
+#div-do-meio{
+ display:grid;
+ grid-template-columns: repeat(2,1fr) ; 
+ grid-column-gap:20px;
+ grid-row-gap:20px;
+ padding:8px;
+ border:none;
+ height:20%;
+
+
+ 
+}
+
+#div-do-meio div{
+    height: 200px;
+}
+
+#div-inferior{
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-row-gap:20px;
+    grid-column-gap: 20px;
+    border:none;
+    padding:8px;
+    height:20%;
+}
+
+#div-inferior div{
+    height:100px;
+
+}
+
+#first-block {
+ 
+    background-color: red;
+    height: 50px;
+   
+}
+
+.blue-block {
+    background-color:blue;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.yellow-block {
+    background-color: yellow;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.green-block {
+    background-color: green;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.black-block {
+    background-color: black;
+    color: white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.white-block {
+    background-color: white;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    @media only screen and (min-width : 421px) and (max-width:800px) {
+
+     #div-superior{
+         display:grid;
+        grid-template-columns: 1fr 1fr;
+         
+     }
+
+     #div-superior div:nth-child(3){
+         display:grid;
+         grid-column: 1/-1;
+         
+     }
+
+     #div-superior div:nth-child(6){
+         grid-column:1/-1;
+
+     }
+
+     #div-inferior{
+         display:grid;
+         grid-template-columns:1fr 1fr;
+     }
+
+     #div-inferior div:nth-child(3){
+         grid-column: 1/-1;
+     }
+
+    
+    }
+
+
+@media only screen and (min-width : 320px) and (max-width:420px) {
+         #div-superior{
+             display:flex;
+             flex-direction: column;
+         }
+
+         #div-do-meio{
+             display:flex;
+             flex-direction:column;
+         }
+
+         #div-do-meio div{
+             height:100px;
+         }
+
+         #div-inferior{
+             display:flex;
+             flex-direction: column;
+         }
+
+
+}       
