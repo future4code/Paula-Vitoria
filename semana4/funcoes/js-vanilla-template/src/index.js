@@ -57,10 +57,10 @@ let imprimir =(mensagem) =>{
 
 }
 
-imprimir("Jesus te ama");
+imprimir("Jesus te ama");*/
 
 
-/*EXERCICIO 6 
+/*EXERCICIO 6 */
 //a.
 const array = [10, 23, 45, 78, 90, 52, 35, 67, 84, 22];
 
@@ -69,8 +69,8 @@ imprimirQuantidade=(array)=>{
 }
 let quantidade = imprimirQuantidade(array);
 console.log(quantidade);
-//b
 
+//b
 let isPar = (numero) =>{
   if(numero%2 === 0){
   return  "é par";
@@ -172,35 +172,40 @@ let retornarMaiorNumero = (array) =>{
     if(array[i] > maior){
       maior = array[i];
     }
-    
   }
   console.log("Maior numero " + maior);
-
 }
 valores = [12,48,7,21];
-
 retornarMaiorNumero(valores);//chamada da função
 
 //c
-let maiorIndice = (array) => {
+let retornarMaiorNumero = (array) =>{
+  let maior = array[0];
   for(let i =0; i<array.length; i++){
-    retornarMaiorNumero(array);
-
+    if(array[i] > maior){
+      maior = array[i];
+      indice = i;
+    
+    }
   }
-
+  console.log("Maior índice é "+indice);
 }
+valores = [12,48,78,21];
+retornarMaiorNumero(valores);
+
 
 
 //d
-let invertido = (array) =>{
+let inverter = (array) =>{
   let invertido = [];
-
-  for(let i =0; i<array.length; i++){
-    for(let j = array.length ;j >=0 ;j--)
-    invertido[i] = array[j];
-  }
+    for(let j = array.length-1 ;j >=0 ;j--){
+    invertido.push(array[j]);
+   
+}
 console.log(invertido);
 }
+numeros = [1,2,3,4,5,6]
+inverter(numeros);
 
 
 
