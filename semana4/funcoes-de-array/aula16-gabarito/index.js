@@ -90,8 +90,17 @@ function filtrarDespesas(){
     let valorMin = Number(document.getElementById('valorFiltroMin').value)
     let valorMax = Number(document.getElementById('valorFiltroMax').value)
 
+    console.log(tipoFiltro);
+    console.log(valorMin);
+    console.log(valorMax);
     const callback = (despesa) =>{
-       return despesa.tipo === tipoFiltro
+        if(despesa.tipo === tipoFiltro){
+            if(despesa.valor >=valorMin && despesa.valor <= valorMax){
+                return true;
+            }
+        }else {
+            return false;
+        }
     }
 
     despesasFiltradas = arrDespesas.filter(callback)
@@ -103,14 +112,9 @@ function filtrarDespesas(){
 }
 
 filtrarDespesas();
+
 //tipo da despesa, valor minimo e maximo(escolhidos pelo usuario)
-
-
-
-
-
 // FunÇoes que fazem validaÇoes dos inputs de criaÇao de despesas 
-
 // NÃO SE PREOCUPEM EM ENTENDER ESSAS FUNÇÕES
 
 function validarValor(valor){
