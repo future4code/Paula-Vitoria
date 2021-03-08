@@ -1,7 +1,10 @@
 //Exercício 1
 function inverteArray(array) {
-  //retornar o PRÓPRIO ARRAY INVERTIDO!
-     
+   let arrayInvertido =[];
+   for(let i = array.length-1; i>=0 ; i--){
+      arrayInvertido.push(array[i])
+   }
+  return arrayInvertido;
 }
 
 //Exercício 2
@@ -57,16 +60,42 @@ function retornaQuantidadeElementos (array) {
 //Exercício 6
 
 function retornaExpressoesBooleanas() {
+   const booleano1 = true;
+   const booleano2 = false;
+   const booleano3 = !booleano2;
+   const booleano4 = !booleano3;
 
+   //let controle = true;
+   let booleanos = []
+
+  const exp1 = booleano1 && booleano2 && !booleano4;
+   booleanos.push(exp1);
+   const exp2 = (booleano1 && booleano2) || !booleano3;
+  booleanos.push(exp2); 
+  const exp3 = (booleano2 || booleano3) && (booleano4 || booleano1);
+  booleanos.push(exp3);
+  const exp4 = !(booleano2 && booleano3) || !(booleano1 && booleano3);
+  booleanos.push(exp4)
+  const exp5 = !(booleano1) && !(booleano3) || (!booleano4 && booleano3 && booleano3)
+  booleanos.push(exp5);
+
+  return booleanos;
 }
+
 
 
 //Exercício 7
 
 function retornaNNumerosPares(n) {
-  
-   
+   const nPares = [];
+ for(let numero = 0; nPares.length < n; numero++) {
+  if(numero % 2 === 0) {
+    nPares.push(numero)
+  }
+ }
+ return nPares;
 }
+
 
 
 
@@ -90,12 +119,13 @@ function checaTriangulo(a, b, c) {
 // Exercício 9
 
 function comparaDoisNumeros(num1, num2) {
- /*  let menor;
+   let menor;
    let obj = {
       maiorNumero:0,
       maiorDivisivelporMenor:true,
       diferenca:0,
    }
+
 
    if(num1 > num2){
       obj.maiorNumero = num1;
@@ -105,57 +135,109 @@ function comparaDoisNumeros(num1, num2) {
       menor= num1;
    }
 
-   console.log(obj.maiorNumero);*/
+   if(obj.maiorNumero%menor === 0){
+      maiorDivisivelporMenor =  true;
+   }else{
+      maiorDivisivelporMenor =  false;
+   }
+  
+   obj.diferenca = obj.maiorNumero - menor;
+
+   return obj;
+
+
    
 }
 
-comparaDoisNumeros(2,4);
+
 // Exercício 10
 
 function segundoMaiorEMenor(array) {
-  /* let maiorNumero=array[0];
-   let menorNumero=array[0];
-   let novoArray =[];
-*/
+   let arrayMaiorMenor = [];
+   for(let i =0; i< array.length; i++){
+      for(let j=0; j<array.length; j++){
+         if(array[i] < array[j]){
+            let aux = array[i];
+            array[i] = array[j];
+            array[j] = aux;
+         }
+      }
+   }
+   let segundoMaior = 0;
+   let segundoMenor = 0;
 
+   for(let i = 0 ; i< array.length; i++){
+      segundoMaior = array[array.length -2];
+      segundoMenor = array[1];
+   }
 
-}
+arrayMaiorMenor.push(segundoMaior);
+arrayMaiorMenor.push(segundoMenor);
+
+return arrayMaiorMenor;
+ }
 
 //Exercício 11
 
 function ordenaArray(array) {
+   for(let i =0; i< array.length; i++){
+      for(let j=0; j<array.length; j++){
+         if(array[i] < array[j]){
+            let aux = array[i];
+            array[i] = array[j];
+            array[j] = aux;
+         }
+      }
+   }
 
+return array;
    
 }
 
 // Exercício 12
-
 function filmeFavorito() {
-   const filmeAstrodev = {
-      nome:"O diabo Veste Prada",
+   const filme = {
+      nome:"O Diabo Veste Prada",
       ano: 2006,
       diretor: "David Frankel",
-      atores:["Meryl Streep", "Ane Hathaway","Emily Blunt","Stanley Tucci"],
+      atores:["Meryl Streep", "Anne Hathaway","Emily Blunt","Stanley Tucci"]
 
    }
+
+   return filme;
 }
 
 // Exercício 13
 
 function imprimeChamada() {
-   // implemente sua lógica aqui
+   const filme = {
+      nome:"O Diabo Veste Prada",
+      ano: 2006,
+      diretor: "David Frankel",
+      atores:["Meryl Streep", "Anne Hathaway","Emily Blunt","Stanley Tucci"]
+   }
+
+   return `Venha assistir ao filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores[0]}, ${filme.atores[1]}, ${filme.atores[2]}, ${filme.atores[3]}.`
 }
 
 // Exercício 14
 
 function criaRetangulo(lado1, lado2) {
-   // implemente sua lógica aqui
+   const retangulo={
+      largura:lado1,
+      altura:lado2,
+      perimetro:(lado1*2) + (lado2*2),
+      area:lado1 * lado2,
+   }
+return retangulo;
+
 }
 
 // Exercício 15
 
 function anonimizaPessoa(pessoa) {
-   // implemente sua lógica aqui
+   pessoa.nome="ANÔNIMO";
+   return pessoa;
 }
 
 // Exercício 16
@@ -170,32 +252,75 @@ const arrayDePessoas = [
 // Exercício 16, letra A
 
 function maioresDe18(arrayDePessoas) {
-   // implemente sua lógica aqui
+  
+   callback = (pessoa)=>{
+     if(pessoa.idade > 18){
+        return true;
+     }else{
+        return false;
+     }
+   }
+   
+  const soMaioresDe18 = arrayDePessoas.filter(callback)
+
+   return soMaioresDe18;
 }
 
 // Exercício 16, letra B
 
 function menoresDe18(arrayDePessoas) {
-   // implemente sua lógica aqui
+  const callback = (pessoa) =>{
+   if(pessoa.idade < 18){
+      return true;
+   }else{
+      return false;
+   }
+  }
+
+  const soMenoresDe18 = arrayDePessoas.filter(callback);
+  return soMenoresDe18;
 }
 
 // Exercício 17, letra A
 
 function multiplicaArrayPor2(array) {
-   // implemente sua lógica aqui
+   const callback = (numero) =>{
+      return numero*2 ;
+   }
+const multiplicadoPor2 = array.map(callback)
+ 
+  return multiplicadoPor2;
 }
+
+
 
 // Exercício 17, letra B
 
 function multiplicaArrayPor2S(array) {
-  // implemente sua lógica aqui
+  const callback = (numero)=>{
+     return String(numero * 2);
+  }
+
+  const multiplicadoPor2S = array.map(callback);
+  return multiplicadoPor2S
 }
 
 // Exercício 17, letra C
 
 function verificaParidade(array) {
-   // implemente sua lógica aqui
-}
+   const callback = (numero) => {
+      if(numero%2 === 0){
+         return `${numero} é par`
+      }else{
+         return `${numero} é ímpar`
+      }
+   }
+
+   const verificaParidade= (array.map(callback));
+   
+   return verificaParidade;
+   }
+
 
 // Exercício 18
 
@@ -210,41 +335,96 @@ const pessoas = [
 
 //Exercício 18, letra A
 
-function retornaPessoasAutorizadas(pessoas) {
-   // implemente sua lógica aqui
+function retornaPessoasAutorizadas() {
+   const callback = (pessoa) =>{
+      if(pessoa.altura >= 1.5 && pessoa.idade > 14 && pessoa.idade < 60){
+         return true;
+      }else{
+         return false;
+      }
+   }
+
+   const soPessoasAutorizadas = pessoas.filter(callback);
+   return soPessoasAutorizadas;
 }
 
 
 // Exercício 18, letra B
 
-function retornaPessoasNaoAutorizadas(pessoas) {
-   // implemente sua lógica aqui
+function retornaPessoasNaoAutorizadas() {
+
+  
+   const callback =(pessoa) =>{
+         if(pessoa.altura<1.5){
+            return true;
+         }
+         if(pessoa.idade < 14 || pessoa.idade>60){
+            return true;
+         }else{
+            return false;
+         }
+   }
+
+   const soPessoasNaoAutorizadas = pessoas.filter(callback);
+   return soPessoasNaoAutorizadas;
 }
 
 //Exercício 19
 
 const consultas = [
-  { nome: "João", genero: "masculino", cancelada: true, dataDaConsulta: "01/10/2019" },
-  { nome: "Pedro", genero: "masculino", cancelada: false, dataDaConsulta: "02/10/2019" },
-  { nome: "Paula", genero: "feminino", cancelada: true, dataDaConsulta: "03/11/2019" },
-  { nome: "Márcia", genero: "feminino", cancelada: false, dataDaConsulta: "04/11/2019" }
-  ]
+   { nome: "João", genero: "masculino", cancelada: false, dataDaConsulta: "01/10/2019" },
+   { nome: "Pedro", genero: "masculino", cancelada: true, dataDaConsulta: "02/10/2019" },
+   { nome: "Paula", genero: "feminino", cancelada: false, dataDaConsulta: "03/11/2019" },
+   { nome: "Márcia", genero: "feminino", cancelada: true, dataDaConsulta: "04/11/2019" }
+ ]
+function retornaEmailConsulta() {
+      const callback=(consulta)=>{
+      if(consulta.cancelada === false && consulta.genero==="feminino"){
+         return `Olá, Sra. ${consulta.nome}. Estamos enviando esta mensagem para
+         lembrá-la da sua consulta no dia ${consulta.dataDaConsulta}. Por favor, acuse
+         o recebimento deste e-mail.`
 
-function retornaEmailConsulta(consultas) {
-  // implemente sua lógica aqui
+      }else if(consulta.cancelada === false && consulta.genero==="masculino"){
+         return `Olá, Sr. ${consulta.nome}. Estamos enviando esta mensagem para
+         lembrá-lo da sua consulta no dia ${consulta.dataDaConsulta}. Por favor, acuse
+         o recebimento deste e-mail.`
+      }else if(consulta.cancelada === true && consulta.genero==="feminino"){
+         return `Olá, Sra. ${consulta.nome}. Infelizmente, sua consulta marcada para o dia
+         ${consulta.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco 
+         para remarcá-la.`
+         
+      }else{
+         return `Olá, Sr. ${consulta.nome}. Infelizmente, sua consulta marcada para o dia
+         ${consulta.dataDaConsulta} foi cancelada. Se quiser, pode entrar em contato conosco 
+         para remarcá-la.`
+      }
+   }
+   const soConsultasFiltradas = consultas.map(callback);
+   return soConsultasFiltradas;
+
 }
 
 //Exercício 20
 
 const contas = [
-  { cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
-  { cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
-  { cliente: "Pedro", saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
-  { cliente: "Luciano", saldoTotal: 100, compras: [100, 200, 1700] },
-  { cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
-  { cliente: "Soter", saldoTotal: 1200, compras: [] }
+  { cliente: 'João', saldoTotal: 1000, compras: [100, 200, 300] },
+  { cliente: 'Paula', saldoTotal: 7500, compras: [200, 1040] },
+  { cliente: 'Pedro', saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
+  { cliente: 'Luciano', saldoTotal: 100, compras: [100, 200, 1700] },
+  { cliente: 'Artur', saldoTotal: 1800, compras: [200, 300] },
+  { cliente: 'Soter', saldoTotal: 1200, compras: [] }
 ]
 
 function atualizaSaldo() {
-  // implemente sua lógica aqui
-}
+   totalCompra = 0;
+
+  const callback = (conta) =>{
+   contas.compras.forEach(valorDaCompra)
+      totalCompra +=valorDaCompra;
+
+   
+  }
+
+  }
+
+
