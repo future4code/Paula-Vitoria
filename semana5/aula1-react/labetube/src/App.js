@@ -1,6 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
-
+import SearchIcon from '@material-ui/icons/Search';
+import MicIcon from '@material-ui/icons/Mic';
+import VideoCallIcon from '@material-ui/icons/VideoCall';
+import AppsIcon from '@material-ui/icons/Apps';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import HomeIcon from '@material-ui/icons/Home';
+import WhatshotIcon from '@material-ui/icons/Whatshot';
+import SubscriptionsIcon from '@material-ui/icons/Subscriptions';
+import CropOriginalIcon from '@material-ui/icons/CropOriginal';
+import HistoryIcon from '@material-ui/icons/History';
+import YouTubeIcon from '@material-ui/icons/YouTube';
 function App() {
   const titulo ="Título do Vídeo" 
   function reproduzVideo() {
@@ -10,19 +20,21 @@ function App() {
     <div>
     <div className="tela-inteira">
         <header>
-            <h1>Lab Tube</h1>
-            <input type="text" placeholder="Busca" id="campoDeBusca" />
+        <YouTubeIcon/><h1>LabTube</h1>
+            <input type="text" placeholder="Pesquisa" id="campoDeBusca"/> <div id="botao-busca"><SearchIcon/></div><MicIcon/>
+            <div className="icones-superior">
+                <div><VideoCallIcon/></div> <div><AppsIcon/></div><div><NotificationsIcon/> </div>
+            </div>
         </header>
 
         <main>
             <nav className="menu-vertical">
                 <ul>
-                    <li className="botoes-meunu-vertical">Início</li>
-                    <li className="botoes-meunu-vertical">Em alta</li>
-                    <li className="botoes-meunu-vertical">Inscrições</li>
-                    <hr />
-                    <li className="botoes-meunu-vertical">Originais</li>
-                    <li className="botoes-meunu-vertical">Histórico</li>
+                    <li className="botoes-meunu-vertical"><div><HomeIcon/></div>Início</li>
+                    <li className="botoes-meunu-vertical"><div><WhatshotIcon/></div>Em alta</li>
+                    <li className="botoes-meunu-vertical"><div><SubscriptionsIcon/></div>Inscrições</li>
+                    <li className="botoes-meunu-vertical"><div><CropOriginalIcon/></div>Originais</li>
+                    <li className="botoes-meunu-vertical"><div><HistoryIcon/></div>Histórico</li>
                 </ul>
             </nav>
             
@@ -63,7 +75,7 @@ function App() {
         </main>
 
         <footer>
-            <h4>Oi! Eu moro no footer!</h4>
+            
         </footer>
     </div>
     </div>
