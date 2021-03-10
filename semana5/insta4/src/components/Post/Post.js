@@ -1,12 +1,16 @@
 import React from 'react'
 import './Post.css'
-
 import {IconeComContador} from '../IconeComContador/IconeComContador'
-
 import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
+import iconeEstrelaPreta from '../../img/star_border-24px.svg'
+import iconeEstrelaBranca from '../../img/star-24px.svg'
+import iconeShare from '../../img/share-24px.svg'
+import { GradeRedesSociais } from '../GradeRedesSociais/GradeRedesSociais'
+import facebook from '../../img/facebook-24px.svg'
+import twitter from '../../img/twitter.svg'
 
 class Post extends React.Component {
   state = {
@@ -14,9 +18,23 @@ class Post extends React.Component {
     numeroCurtidas: 0,
     comentando: false,
     numeroComentarios: 0,
+    salvo:false,
+    compartilhado: false
   
 
   }
+
+  onClickSalvar= ()=>{
+    if(this.state.salvo === false){
+      this.setState({salvo:true});
+    }else{
+      this.setState({salvo:false});
+    }
+  }
+
+  onClickCompartilhar= () =>{
+    this.setState({compartilhado:true});
+}
 
   handleValorInput = (event) =>{
     this.setState({valorInput: event.target.value});
@@ -52,7 +70,16 @@ class Post extends React.Component {
   }
 
   render() {
-    let iconeCurtida
+
+    let iconeSalvo;
+    let iconeCurtida;
+    let iconeCompartilhar = iconeShare;
+
+    if(this.state.salvo){
+      iconeSalvo = iconeEstrelaBranca;
+    }else{
+      iconeSalvo = iconeEstrelaPreta;
+    }
 
     if(this.state.curtido) {
       iconeCurtida = iconeCoracaoPreto
@@ -61,6 +88,12 @@ class Post extends React.Component {
     }
 
     let componenteComentario
+    let componenteRedesSociais
+
+
+    if(this.compartilhado === true){
+      componenteRedesSociais = <GradeRedesSociais/>
+    }
 
     if(this.state.comentando) {
       componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
@@ -82,12 +115,25 @@ class Post extends React.Component {
         />
 
         <IconeComContador
+          icone={iconeSalvo}
+          onClickIcone={this.onClickSalvar}/>
+
+        <IconeComContador
           icone={iconeComentario}
           onClickIcone={this.onClickComentario}
           valorContador={this.state.numeroComentarios}
         />
+
+        <IconeComContador
+          icone={iconeCompartilhar}
+          onClickIcone={this.onClickCompartilhar}
+        
+        />
+
+
       </div>
       {componenteComentario}
+      { componenteRedesSociais}
     </div>
   }
 }
