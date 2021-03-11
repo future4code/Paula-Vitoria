@@ -1,0 +1,22 @@
+.card-pequeno-container{
+    display:flex;
+    border: 1px solid black;
+    width:100%;
+    height:70px;
+    align-items: center;
+    margin-top: 20px;
+  
+}
+
+.card-pequeno-container > img {
+    
+    height:60%;
+    margin-left:10px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.container-dados-adress{
+    display:flex;
+    align-items: center;
+}
