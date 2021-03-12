@@ -8,8 +8,6 @@ import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
 import iconeEstrelaPreta from '../../img/star_border-24px.svg'
 import iconeEstrelaBranca from '../../img/star-24px.svg'
 import iconeShare from '../../img/share-24px.svg'
-import facebook from '../../img/facebook-24px.svg'
-import twitter from '../../img/twitter.svg'
 
 class Post extends React.Component {
   state = {
@@ -91,10 +89,6 @@ class Post extends React.Component {
     if(this.state.comentando) {
       componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
     }
-
-    
-
-
 
     return <div className={'post-container'}>
       <div className={'post-header'}>

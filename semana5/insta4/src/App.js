@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Post from "./components/Post/Post";
+import styled from 'styled-components';
 class App extends React.Component {
   state = {
 
@@ -31,20 +32,20 @@ class App extends React.Component {
   };
 
 
-  onChangeInputNome(event){
+  onChangeInputNome=(event)=>{
     this.setState({ valorInputNome: event.target.value });
   }
 
-  onChangeInputFotoUsuario(event){
+  onChangeInputFotoUsuario=(event)=>{
     this.setState({valorInputFotoUsuario:event.target.value});
   }
 
-  onChangeInputFotoPost(event){
+  onChangeInputFotoPost=(event)=>{
     this.setState({valorInputFotoPost:event.target.value});
   }
 
   
-/*    adicionaPost = () => {
+ adicionaPost = () => {
      
       const novoPost = {
         nomeUsuario: this.state.valorInputNome,
@@ -53,12 +54,16 @@ class App extends React.Component {
       };
 
  
-    novaListaPosts = [...posts, novoPost]
+    let novaListaPosts = [novoPost,...this.state.posts]
 
-  };*/
+    this.setState({posts:novaListaPosts, valorInputFotoPost:"", valorInputFotoUsuario:"",valorInputNome:""});
+
+  };
+
+
 
   render() {
-   
+
     const listaDePosts = this.state.posts.map((post) => {
       return (
         <Post
@@ -68,33 +73,71 @@ class App extends React.Component {
         />
       );
     });
+
+  const SubTituloRosa = styled.h2`
+  color:#ff6f9c;
+  margin:10px;
+
+`
+
+    const TituloRosa = styled.h1`
+    display:flex;
+    align-items:center;
+    justify-content:center;
+     color:#ff6f9c;
+    
+    `
+    const PostContainer = styled.div`
+     display:flex;
+     flex-direction:column;
+     justify-content:center;
+     align-items:center;
+     
+     
+    `
+
+    const ButtonAdiciona = styled.button`
+      background-Color:#ff6f9c;
+      border-radius:10px;
+      margin-left: 10px;
+    `
+
+    const InputPost = styled.input`
+    margin: 10px;
+    `
+    
     return (
       <div>
 
-        <h1>Galeria de Posts</h1>
-        <h3>Criar um novo Post</h3>
-          <input
+        <TituloRosa>Galeria de Posts</TituloRosa>
+        <SubTituloRosa>Criar um novo Post</SubTituloRosa>
+   
+          <InputPost
             value={this.state.valorInputNome}
             onChange={this.onChangeInputNome}
             placeholder={"nome do usuário"}
           />
 
-          <input
+          <InputPost
           value={this.state.valorInputFotoUsuario}
           onChange={this.onChangeInputFotoUsuario}
           placeholder={"Foto do usuário"}
           />
 
 
-          <input
+          <InputPost
           value={this.state.valorInputFotoPost}
           onChange={this.onChangeInputFotoPost}
           placeholder={"Foto do Post"}
           />
+       
 
-          <button onClick={this.adicionaPost}>Adicionar Post </button>
+          <ButtonAdiciona onClick={this.adicionaPost}>Adicionar Post </ButtonAdiciona>
           <hr/>
-        <div>{listaDePosts}</div>
+        <PostContainer>
+          {listaDePosts}
+        </PostContainer>
+     
       </div>
     );
   }
