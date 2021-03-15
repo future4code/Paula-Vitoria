@@ -5,11 +5,13 @@ import InputComPergunta from './InputComPergunta'
 export default class DadosGerais extends React.Component{
     
     state = {
-        inputRespostas:[]
-    }
-    render(){
+        telaAtual:'Etapa1'
+      }
 
-       
+      irParaEtapa2 = () => {
+        this.setState({ telaAtual: "Etapa2" });
+      };
+    render(){
         
         return(
             <div>

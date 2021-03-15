@@ -4,8 +4,8 @@ import InputComPergunta from "./InputComPergunta"
 export default class InformacoesEnsinoSuperior extends React.Component{
     
     state = {
-        inputRespostas:[]
-    }
+        telaAtual:'Etapa1'
+      }
     render(){
 
        
