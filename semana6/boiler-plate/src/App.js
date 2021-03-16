@@ -57,6 +57,9 @@ class App extends React.Component {
 
   }
 
+
+
+
   removerTarefa =(id)=>{
     const novaListaDeTarefas = this.state.tarefas.map((tarefa)=>{
       return tarefa.id === id
@@ -65,6 +68,12 @@ class App extends React.Component {
 
     this.setState({tarefas:novaListaDeTarefas});
 
+
+  }
+
+
+  apagarTodasTarefas=()=>{
+    this.setState({tarefas:[]})
 
   }
 
@@ -119,20 +128,28 @@ class App extends React.Component {
             <option value="pendentes">Pendentes</option>
             <option value="completas">Completas</option>
           </select>
+          
+
         </InputsContainer>
         <TarefaList>
           {listaFiltrada.map(tarefa => {
             return (
+            <div>
               <Tarefa
                 completa={tarefa.completa}
                 onClick={() => this.selectTarefa(tarefa.id)}
               >
                 {tarefa.texto} 
               </Tarefa>
+              <button onClick={()=>this.removerTarefa(tarefa.id)}>Remover</button>
+          </div>
+            
               
             )
+            
           })}
         </TarefaList>
+        <button onClick= {this.apagarTodasTarefas}>Apagar todas</button>
       </div>
     )
   }
