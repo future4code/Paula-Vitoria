@@ -21,6 +21,11 @@ const InputsContainer = styled.div`
 class App extends React.Component {
     state = {
       tarefas: [
+        {
+          id: Date.now(), // Explicação abaixo
+          texto: 'Texto da tarefa',
+          completa: false // Indica se a tarefa está completa (true ou false)
+        }
     
     ],
       inputValue: '',
@@ -58,15 +63,14 @@ class App extends React.Component {
   }
 
   removerTarefa =(id)=>{
-    const novaListaDeTarefas = this.state.tarefas.map((tarefa)=>{
-      return tarefa.id === id
+    console.log("removi");
+    const novaListaDeTarefas = this.state.tarefas.filter((tarefa)=>{
+      return tarefa.id !== id
 
     })
 
     this.setState({tarefas:novaListaDeTarefas});
-
-
-  }
+}
 
   selectTarefa = (id) => {
     const novaListaTarefas = this.state.tarefas.map((tarefa)=>{
@@ -84,6 +88,11 @@ class App extends React.Component {
 
     this.setState({tarefas:novaListaTarefas});
 
+  }
+
+
+  apagarTodasTarefas=()=>{
+    this.setState({tarefas:[]})
   }
 
   onChangeFilter = (event) => {
@@ -119,20 +128,27 @@ class App extends React.Component {
             <option value="pendentes">Pendentes</option>
             <option value="completas">Completas</option>
           </select>
+          <input placeholder="Filtrar pelo nome" value={this.state.inputValue} onChange={this.onChangeInput}/>
         </InputsContainer>
         <TarefaList>
           {listaFiltrada.map(tarefa => {
             return (
+              <div>
               <Tarefa
                 completa={tarefa.completa}
                 onClick={() => this.selectTarefa(tarefa.id)}
               >
                 {tarefa.texto} 
+        
               </Tarefa>
+              <button onClick={()=>this.removerTarefa(tarefa.id)}>remover</button>
+              </div>
               
             )
           })}
         </TarefaList>
+        <button onClick = {this.apagarTodasTarefas}>Apagar todas</button>
+        
       </div>
     )
   }
