@@ -18,13 +18,16 @@ const InputsContainer = styled.div`
   gap: 10px;
 `
 
+
+
 class App extends React.Component {
     state = {
       tarefas: [
     
     ],
       inputValue: '',
-      filtro: 'pendentes'
+      filtro: 'pendentes',
+      inputNomeTarefa:''
     }
 
   componentDidUpdate() {
@@ -61,8 +64,8 @@ class App extends React.Component {
 
 
   removerTarefa =(id)=>{
-    const novaListaDeTarefas = this.state.tarefas.map((tarefa)=>{
-      return tarefa.id === id
+    const novaListaDeTarefas = this.state.tarefas.filter((tarefa)=>{
+      return tarefa.id !== id
 
     })
 
@@ -100,7 +103,21 @@ class App extends React.Component {
 
   }
 
-  render() {
+  onChangeInputNomeTarefa = (event) =>{
+    this.setState({inputNomeTarefa:event.target.value});
+  }
+  
+  filtrarPeloNome = (nome) =>{
+    const tarefaFiltrada = this.state.tarefas.filter((tarefa)=>{
+         return nome === tarefa.texto;
+ 
+    })
+      
+
+      this.setState({tarefas:tarefaFiltrada, inputNomeTarefa:''});
+     }
+ 
+   render() {
     const listaFiltrada = this.state.tarefas.filter(tarefa => {
       switch (this.state.filtro) {
         case 'pendentes':
@@ -112,24 +129,30 @@ class App extends React.Component {
       }
     })
 
+
+    
+   
+
     return (
       <div className="App">
         <h1>Lista de tarefas</h1>
         <InputsContainer>
           <input value={this.state.inputValue} onChange={this.onChangeInput}/>
           <button onClick={this.criaTarefa}>Adicionar</button>
+          
         </InputsContainer>
         <br/>
-
+        
         <InputsContainer>
           <label>Filtro</label>
+          
           <select value={this.state.filter} onChange={this.onChangeFilter}>
             <option value="">Nenhum</option>
             <option value="pendentes">Pendentes</option>
             <option value="completas">Completas</option>
           </select>
-          
-
+          <input placeholder= "Filtrar pelo nome" value={this.state.inputNomeTarefa} onChange={this.onChangeInputNomeTarefa}/>
+          <button onClick={()=>this.filtrarPeloNome(this.state.inputNomeTarefa)}>Filtrar</button>
         </InputsContainer>
         <TarefaList>
           {listaFiltrada.map(tarefa => {
@@ -149,6 +172,7 @@ class App extends React.Component {
             
           })}
         </TarefaList>
+       
         <button onClick= {this.apagarTodasTarefas}>Apagar todas</button>
       </div>
     )
