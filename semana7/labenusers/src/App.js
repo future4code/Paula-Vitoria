@@ -3,7 +3,7 @@ import './App.css';
 import Cadastro from './components/Cadastro';
 import Lista from "./components/Lista"
 import axios from "axios"
-//import Detalhe from "./components/Detalhe";
+import Detalhe from "./components/Detalhe";
 
 
 export default class App extends React.Component{
@@ -97,6 +97,7 @@ export default class App extends React.Component{
       ).then((res)=> {
       this.getUsers();
       console.log("Usuário Excluído com sucesso!")
+      
         
         
       }).catch((err)=>{
@@ -127,6 +128,7 @@ export default class App extends React.Component{
       usersList={this.state.usersList} 
       deleteUser={this.deleteUser}
       renderRegister= {this.showRegister}
+      
      
       />
 
@@ -136,7 +138,7 @@ export default class App extends React.Component{
   
   return (
     <div>
-       {rendersCorrectScreen()}
+     {rendersCorrectScreen()}
     </div>
   );
 }

@@ -1,23 +1,24 @@
 import React from "react";
+import Lista from "./Lista"
+
 
 export default class Detalhe extends React.Component{
+
     render(){
         
         
         return(
+        <div>
             <div>
-                <label>
-                    Nome:<p>{this.props.nome}</p>
-                </label>
-                <label>
-                    Email:<p>{this.props.email}</p>
-                </label>
-                <button>Deletar</button>
-                <button>Voltar</button>
-
+                Nome:<span>{this.props.nome}</span>
             </div>
+            <div>
+                Email:<span>{this.props.email}</span>
+            </div>
+            <button onClick={()=>{this.props.deleteUser(this.props.idUser)}}>Deletar</button>
+            <button>Voltar</button>
 
-
+        </div>
         )
     }
 
