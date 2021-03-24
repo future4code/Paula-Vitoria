@@ -3,6 +3,7 @@ import './App.css';
 import Cadastro from './components/Cadastro';
 import Lista from "./components/Lista"
 import axios from "axios"
+//import Detalhe from "./components/Detalhe";
 
 
 export default class App extends React.Component{
@@ -13,14 +14,13 @@ export default class App extends React.Component{
     inputEmail:"",
     inputName:"",
     isOnRegister:true,
+    detail:false
   }
   
   componentDidMount(){
     this.getUsers();
 
   }
-
-
   showRegister=()=>{
     this.setState({isOnRegister:true})
   }
@@ -85,6 +85,8 @@ export default class App extends React.Component{
   }
   deleteUser = (id) =>{
 
+    if(window.confirm("Tem certeza de que deseja deletar o usuário?")){
+
     axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`
       ,
       {
@@ -100,14 +102,15 @@ export default class App extends React.Component{
       }).catch((err)=>{
         console.log("Desculpe. Não pudemos excluir. Tente novamente!");
       })
+    }
 
   }
-
 
   render(){
 
     const rendersCorrectScreen=()=>{
-      if(this.state.isOnRegister === true){
+
+   if(this.state.isOnRegister === true){
         return  <Cadastro
       
         inputEmail={this.state.inputEmail}
@@ -124,21 +127,17 @@ export default class App extends React.Component{
       usersList={this.state.usersList} 
       deleteUser={this.deleteUser}
       renderRegister= {this.showRegister}
+     
       />
 
         
       }
     }
-    
- 
-
-    
+  
   return (
     <div>
-     
-      {rendersCorrectScreen()}
-  
-     </div>
+       {rendersCorrectScreen()}
+    </div>
   );
 }
 }
