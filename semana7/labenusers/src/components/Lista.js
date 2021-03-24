@@ -19,13 +19,14 @@ export default class Lista extends React.Component{
             return <li key={user.id}>{user.name}
             
             
-            <button>x</button></li> 
+            <button onClick={()=>{this.props.deleteUser(user.id)}}>x</button></li> 
 
         })
        
         return(
             
             <div>
+                 <button onClick={this.props.renderRegister}>Ir para a página de Cadastro</button>
                 <Titulo>Usuários Cadastrados </Titulo>
                     <ul>
                     {users} 

@@ -11,13 +11,25 @@ export default class App extends React.Component{
   state = {
     usersList:[],
     inputEmail:"",
-    inputName:""
+    inputName:"",
+    isOnRegister:true,
   }
   
-  /*componentDidMount(){
+  componentDidMount(){
     this.getUsers();
 
-  }*/
+  }
+
+
+  showRegister=()=>{
+    this.setState({isOnRegister:true})
+  }
+
+  showList=()=>{
+    this.setState({isOnRegister:false})
+  }
+
+
   onChangeInputName = (event) =>{
     this.setState({inputName:event.target.value});
   }
@@ -71,7 +83,7 @@ export default class App extends React.Component{
       })
 
   }
-  /*deleteUser = (id) =>{
+  deleteUser = (id) =>{
 
     axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`
       ,
@@ -82,36 +94,49 @@ export default class App extends React.Component{
       }
       ).then((res)=> {
       this.getUsers();
+      console.log("Usuário Excluído com sucesso!")
         
         
       }).catch((err)=>{
         console.log("Desculpe. Não pudemos excluir. Tente novamente!");
       })
 
-  }*/
+  }
 
 
   render(){
+
+    const rendersCorrectScreen=()=>{
+      if(this.state.isOnRegister === true){
+        return  <Cadastro
+      
+        inputEmail={this.state.inputEmail}
+        onChangeInputEmail = {this.onChangeInputEmail}
+        inputName={this.state.inputName}
+        onChangeInputName={this.onChangeInputName}
+        createUser = {this.createUser}
+        renderList= {this.showList}
+        />
+      }else{
+       
+       return <Lista
+      
+      usersList={this.state.usersList} 
+      deleteUser={this.deleteUser}
+      renderRegister= {this.showRegister}
+      />
+
+        
+      }
+    }
     
  
 
     
   return (
     <div>
-      <Cadastro
-      
-      inputEmail={this.state.inputEmail}
-      onChangeInputEmail = {this.onChangeInputEmail}
-      inputName={this.state.inputName}
-      onChangeInputName={this.onChangeInputName}
-      createUser = {this.createUser}
-      />
-      <Lista
-      
-      usersList={this.state.usersList} 
-      deleteUser={this.deleteUser}
-      />
-
+     
+      {rendersCorrectScreen()}
   
      </div>
   );

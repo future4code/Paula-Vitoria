@@ -22,7 +22,10 @@ export default class Cadastro extends React.Component{
 
     render(){
         return (
+            <div>
+            <button onClick={this.props.renderList}>Ir para a página de Lista</button>
             <RegisterContainer> 
+                
                 <label>
                     Nome:
                     <input
@@ -40,6 +43,7 @@ export default class Cadastro extends React.Component{
 
                <Button onClick = {this.props.createUser}>Salvar</Button>
         </RegisterContainer>
+        </div>
         )
     }
 
