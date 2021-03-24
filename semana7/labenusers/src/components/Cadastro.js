@@ -9,8 +9,13 @@ width: 250px;
 height:200px;
 align-items:center;
 justify-content:center;
-margin: 200px;
+margin-top: 100px;
+margin-left: 550px;
 
+`
+
+const Button = styled.button `
+margin-top: 50px;
 `
 
 export default class Cadastro extends React.Component{
@@ -33,7 +38,7 @@ export default class Cadastro extends React.Component{
                />
                </label>
 
-               <button onClick = {this.props.createUser}>Salvar</button>
+               <Button onClick = {this.props.createUser}>Salvar</Button>
         </RegisterContainer>
         )
     }

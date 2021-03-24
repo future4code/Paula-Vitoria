@@ -14,10 +14,10 @@ export default class App extends React.Component{
     inputName:""
   }
   
-  componentDidMount(){
+  /*componentDidMount(){
     this.getUsers();
 
-  }
+  }*/
   onChangeInputName = (event) =>{
     this.setState({inputName:event.target.value});
   }
@@ -45,7 +45,7 @@ export default class App extends React.Component{
       }
       ).then((res) =>{
         this.setState({inputName:"", inputEmail:""} );
-        //this.getUsers();
+        this.getUsers();
         alert("Usuário Criado com Sucesso!");
       }).catch((err) => {
         alert("Digite os valores nos campos corretamente!");
@@ -71,25 +71,29 @@ export default class App extends React.Component{
       })
 
   }
+  /*deleteUser = (id) =>{
 
- deleteUser =(id)=>{
-  axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/:${id}`,
-  {
-    headers:{
-    Authorization:"paula-lopes-cruz"
-  
-  }
+    axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`
+      ,
+      {
+        headers:{
+          Authorization:"paula-lopes-cruz"
+        }
+      }
+      ).then((res)=> {
+      this.getUsers();
+        
+        
+      }).catch((err)=>{
+        console.log("Desculpe. Não pudemos excluir. Tente novamente!");
+      })
 
-}).then((res =>{
-    alert("Exclusao efetuada com sucesso!");
-})).catch((res =>{
-  
-}))
-   
+  }*/
 
-  }
 
   render(){
+    
+ 
 
     
   return (
