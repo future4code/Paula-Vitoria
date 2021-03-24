@@ -8,9 +8,6 @@ import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
 import iconeEstrelaPreta from '../../img/star_border-24px.svg'
 import iconeEstrelaBranca from '../../img/star-24px.svg'
 import iconeShare from '../../img/share-24px.svg'
-import { GradeRedesSociais } from '../GradeRedesSociais/GradeRedesSociais'
-import facebook from '../../img/facebook-24px.svg'
-import twitter from '../../img/twitter.svg'
 
 class Post extends React.Component {
   state = {
@@ -19,10 +16,9 @@ class Post extends React.Component {
     comentando: false,
     numeroComentarios: 0,
     salvo:false,
-    compartilhado: false
-  
+    compartilhado: false,
 
-  }
+}
 
   onClickSalvar= ()=>{
     if(this.state.salvo === false){
@@ -88,12 +84,7 @@ class Post extends React.Component {
     }
 
     let componenteComentario
-    let componenteRedesSociais
 
-
-    if(this.compartilhado === true){
-      componenteRedesSociais = <GradeRedesSociais/>
-    }
 
     if(this.state.comentando) {
       componenteComentario = <SecaoComentario aoEnviar={this.aoEnviarComentario}/>
@@ -133,7 +124,7 @@ class Post extends React.Component {
 
       </div>
       {componenteComentario}
-      { componenteRedesSociais}
+   
     </div>
   }
 }
