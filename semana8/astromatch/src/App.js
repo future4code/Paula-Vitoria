@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import React, {useEffect, useState} from "react";
+//import styled from "styled-components"
+import Profile from "./components/Profile"
 
-function App() {
+
+function App (){
+  const [profile,setProfile] = useState({});
+  useEffect ( ( )  =>  {
+    getProfile ( ) ;
+  } ,  [ ] ) ;
+
+  const getProfile=()=>{
+   const  url="https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:aluno/person"
+    axios.get(url)
+    .then((res)=>{
+      console.log("Objeto:" + res.data.profile);
+      setProfile(res.data.profile)
+
+    }).catch((err)=>{
+      console.log(err.data)
+
+    })
+  }
+
+ 
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+    <div>
+      <Profile
+      name={profile.name}
+      age={profile.age}
+      bio={profile.bio}
+      photo={profile.photo}
+      
+      />
     </div>
-  );
-}
+)};
+
 
 export default App;
