@@ -23,6 +23,10 @@ function App (){
     })
   }
 
+  const choosePerson = () =>{
+    const url="";
+  }
+
  
   
   return (
