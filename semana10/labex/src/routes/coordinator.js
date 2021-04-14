@@ -6,7 +6,7 @@ export const goToApplicationForm = (history) => {
   history.push("/trips/application");
 };
 
-export const gotToLoginPage = (history) => {
+export const goToLoginPage = (history) => {
   history.push("/login");
 };
 

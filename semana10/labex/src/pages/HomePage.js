@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { goToListTrips, goToAdminHomePage } from "../routes/coordinator";
+import { goToListTrips, goToLoginPage } from "../routes/coordinator";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import styled from "styled-components";
@@ -23,7 +23,7 @@ const HomePage = () => {
         </button>
         <button
           onClick={() => {
-            goToAdminHomePage(history);
+            goToLoginPage(history);
           }}
         >
           Área do Admin
