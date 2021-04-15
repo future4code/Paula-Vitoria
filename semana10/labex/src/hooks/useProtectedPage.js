@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 export const useProtectedPage = () => {
@@ -11,3 +11,4 @@ export const useProtectedPage = () => {
     }
   }, [history]);
 };
+export default useProtectedPage;
