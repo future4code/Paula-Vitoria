@@ -1,17 +1,55 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import {
-  goToListTrips,
-  goToAdminHome,
-  goToCreateTrip,
-  goToLastPage,
-} from "../routes/coordinator";
-import MainContainer from "../components/MainContainer";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import { goToCreateTrip, goToLastPage } from "../routes/coordinator";
 import useProtectedPage from "../hooks/useProtectedPage";
 import axios from "axios";
 import baseUrl from "../utils/baseUrl";
+import DeleteIcon from "@material-ui/icons/Delete";
+import styled from "styled-components";
+import { HistoryRounded } from "@material-ui/icons";
+
+const AdminContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 30px;
+`;
+const ButtonContainer = styled.div`
+  & > button {
+    margin-right: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    background-color: black;
+    color: #dc9d24;
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+    cursor: pointer;
+    border-style: none;
+  }
+`;
+
+const ListContainer = styled.div`
+  display: flex;
+  & > button {
+    width: 500px;
+    height: 50px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border-style: none;
+    color: #dc9d24;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  button:nth-child(2) {
+    width: 50px;
+
+    margin-left: 30px;
+  }
+`;
 
 const AdminHomePage = () => {
   useProtectedPage();
@@ -30,7 +68,13 @@ const AdminHomePage = () => {
         console.log(err.response.data.message);
       });
   };
-  useEffect(getTrips, []);
+  useEffect(() => {
+    getTrips();
+    const token = window.localStorage.getItem("token");
+    if (token === null) {
+      history.push("/login");
+    }
+  }, [history]);
 
   const deleteTrip = (id) => {
     const token = window.localStorage.getItem("token");
@@ -39,38 +83,52 @@ const AdminHomePage = () => {
     axios
       .delete(url, { headers: { auth: token } })
       .then((res) => {
-        console.log("Deletado!");
+        alert("Deletado!");
       })
       .catch((err) => {
-        console.log("Não foi possível deletar");
+        alert("Não foi possível deletar");
       });
   };
+  useEffect(() => {
+    getTrips();
+  }, [trips]);
 
-  deleteTrip("GzUezWWrPbBJbnXxUAJc");
+  const goToDetailPage = (id) => {
+    history.push(`/admin/trips/${id}`);
+  };
   return (
     <>
-      Admin Home Page
-      <button
-        onClick={() => {
-          goToCreateTrip(history);
-        }}
-      >
-        Criar Viagem
-      </button>
-      <button
-        onClick={() => {
-          goToLastPage(history);
-        }}
-      >
-        Voltar{" "}
-      </button>
-      {trips.map((trip) => {
-        return (
-          <div>
-            <button>{trip.description}</button>
-          </div>
-        );
-      })}
+      <AdminContainer>
+        <ButtonContainer>
+          <button
+            onClick={() => {
+              goToCreateTrip(history);
+            }}
+          >
+            Criar Viagem
+          </button>
+          <button
+            onClick={() => {
+              goToLastPage(history);
+            }}
+          >
+            Voltar
+          </button>
+        </ButtonContainer>
+
+        {trips.map((trip) => {
+          return (
+            <ListContainer>
+              <button onClick={() => goToDetailPage(trip.id)}>
+                {trip.description}
+              </button>
+              <button onClick={() => deleteTrip(trip.id)}>
+                <DeleteIcon />
+              </button>
+            </ListContainer>
+          );
+        })}
+      </AdminContainer>
     </>
   );
 };
