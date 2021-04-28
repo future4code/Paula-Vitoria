@@ -1,0 +1,22 @@
+const FeedContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+const CreatePostContainer = styled.div`
+  height: 250px;
+  width: 506px;
+  display: flex;
+  flex-direction: column;
+
+  & > textArea {
+    width: 500px;
+    height: 150px;
+  }
+
+  & > button {
+    height: 30px;
+    cursor: pointer;
+  }
+`;

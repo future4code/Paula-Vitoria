@@ -47,7 +47,7 @@ const LoginPage = () => {
           name="email"
           value={form.email}
           onChange={onChange}
-          placeholder="Nome"
+          placeholder="Email"
         />
         <input
           name="password"
