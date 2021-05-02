@@ -4,6 +4,36 @@ import { baseUrl } from "../constants/baseUrl";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { goToLastPage } from "../routes/coordinator";
+import styled from "styled-components";
+import { TextField } from "@material-ui/core/";
+import Button from "@material-ui/core/Button";
+
+const InputContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 500px;
+  height: 300px;
+  margin-left: 400px;
+  margin-top: 45px;
+
+  & > h1 {
+    color: #b05582;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  & > Button {
+    margin-top: 10px;
+    width: 500px;
+  }
+`;
 
 const initialForm = {
   email: "",
@@ -44,30 +74,51 @@ const LoginPage = () => {
   return (
     <>
       <form onSubmit={handleClick}>
-        <h1>Register</h1>
+        <InputContainer>
+          <h1>Registre-se</h1>
 
-        <input
-          name="username"
-          value={form.username}
-          onChange={onChange}
-          placeholder="Nome de Usuário"
-        />
+          <TextField
+            name="username"
+            value={form.username}
+            onChange={onChange}
+            placeholder="Nome de Usuário"
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+          />
 
-        <input
-          name="email"
-          value={form.email}
-          onChange={onChange}
-          placeholder="Email"
-        />
-        <input
-          name="password"
-          value={form.password}
-          onChange={onChange}
-          placeholder="Senha"
-        />
+          <TextField
+            name="email"
+            value={form.email}
+            onChange={onChange}
+            placeholder="Email"
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+          />
+          <TextField
+            name="password"
+            value={form.password}
+            onChange={onChange}
+            placeholder="Senha"
+            variant={"outlined"}
+            fullWidth
+            margin={"normal"}
+          />
+          <ButtonContainer>
+            <Button color={"primary"} variant="contained">
+              Entrar
+            </Button>
 
-        <button>Entrar</button>
-        <button onClick={() => goToLastPage(history)}>Voltar</button>
+            <Button
+              color={"primary"}
+              variant="contained"
+              onClick={() => goToLastPage(history)}
+            >
+              Voltar
+            </Button>
+          </ButtonContainer>
+        </InputContainer>
       </form>
     </>
   );

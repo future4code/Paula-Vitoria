@@ -1,39 +1,56 @@
-import react from "react";
+import React from "react";
 import styled from "styled-components";
 import SetaCima from "../components/img/seta-para-cima.png";
 import SetaBaixo from "../components/img/seta-para-baixo.png";
-import { divide } from "lodash";
-import spawn from "cross-spawn";
+import { goToDetailsPost } from "../routes/coordinator";
+import { useHistory } from "react-router-dom";
+import { baseUrl } from "../constants/baseUrl";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const PostCardContainer = styled.div`
   display: flex;
   height: 250px;
   width: 500px;
-  border: 1px solid black;
+  cursor: pointer;
   flex-direction: column;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 const TitleContainer = styled.div`
   display: flex;
   width: 500px;
   height: 50px;
-  border: 1px solid black;
+  border-top: 1px solid lightgray;
+  background-color: lightgray;
   align-items: center;
   justify-content: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: #b05582;
+  font-weight: bold;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 20px;
 `;
 const TextContainer = styled.div`
   height: 200px;
   width: 500px;
-  border: 1px solid black;
+  border: 1px solid lightgray;
 `;
 
 const ReactionsContainer = styled.div`
   height: 50px;
   width: 500px;
-  border: 1px solid black;
+
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  color: #b05582;
+  background-color: lightgray;
 
   & > div:nth-child(1) {
     width: 200px;
@@ -63,25 +80,45 @@ const ReactionsContainer = styled.div`
 `;
 
 const PostCard = (props) => {
+  const vote = (postId, direction) => {
+    const url = `${baseUrl}/posts/${postId}/vote`;
+    const body = {
+      direction: direction,
+    };
+    axios
+      .put(url, body, {
+        headers: {
+          Authorization: window.localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        console.log("Mensagem:", res.data);
+        console.log("deu certo");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
-      <PostCardContainer>
+      <PostCardContainer onClick={props.onClick}>
         <TitleContainer>
-          <p>{"Nome de usuário"}</p>
+          <p>{props.username}</p>
         </TitleContainer>
-        <TextContainer>{"texto do post"}</TextContainer>
+        <TextContainer>{props.text}</TextContainer>
         <ReactionsContainer>
           <div>
-            <button>
+            <button onClick={() => vote(props.id, 1)}>
               <img src={SetaCima} />
             </button>
-            <p>1</p>
-            <button>
+            <p>{props.votesCount}</p>
+            <button onClick={() => vote(props.id, -1)}>
               <img src={SetaBaixo} />
             </button>
           </div>
           <div>
-            <p>2</p>
+            <p>{props.commentsCount}</p>
             <p>Comentários</p>
           </div>
         </ReactionsContainer>
