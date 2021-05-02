@@ -61,7 +61,7 @@ const PostsPage = () => {
         setPost(res.data.post);
       })
       .catch((err) => {});
-  }, [params.id, post]); //coloquei a dependencia post aqui
+  }, [params.id, post]);
 
   const getItemPost = () => {
     return (
@@ -108,6 +108,7 @@ const PostsPage = () => {
       })
       .then((res) => {
         console.log(res.data);
+
         alert("comentário criado com sucesso!");
       })
       .catch((err) => {});
