@@ -98,10 +98,8 @@ const CreateTripPage = () => {
         console.log("deu errado");
       });
   };
-  const imprime = () => {
-    console.log("Form:" + form.name);
-  };
-  useEffect(createTrip, []);
+ 
+  useEffect(createTrip, [form.date,form.description,form.name,form.select, form.duration]);
 
   return (
     <>
