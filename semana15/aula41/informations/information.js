@@ -13,7 +13,22 @@ console.log(`Olá, ${name}! Você tem ${age} anos.`);*/
 const name = process.argv[2];
 const age = Number(process.argv[3]);
 const newAge = age + 7;
+red = "\u001b[31m";
+reset = "\u001b[0m";
+let result;
+var fs = require("fs");
 
-console.log(
-  `Olá, ${name}! Você tem ${age} anos. Em sete anos você terá ${newAge}`
-);
+if (!name || !age) {
+  console.log("Digite um nome e uma idade!");
+} else {
+  result = `Olá, ${red} ${name}! ${reset} Você tem ${red} ${age} ${reset} anos. Em sete anos você terá ${red} ${newAge}`;
+  console.log(result);
+}
+
+exitResult = JSON.stringify(result);
+fs.appendFile("DataInformation.txt", exitResult + "\n", function (err) {
+  if (err) {
+    throw err;
+  }
+  console.log("saved!");
+});

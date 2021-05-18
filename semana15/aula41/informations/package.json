@@ -5,7 +5,7 @@
   "main": "information.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "information": "node information.js"
+    "informations": "node information.js"
   },
   "author": "Paula Lopes",
   "license": "ISC"
