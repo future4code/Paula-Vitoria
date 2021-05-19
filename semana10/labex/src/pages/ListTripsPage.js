@@ -95,7 +95,7 @@ const ListTripsPage = () => {
               <p>Nome:{trip.name}</p>
               <p>Descrição:{trip.description}</p>
               <p>Planeta:{trip.planet}</p>
-              <p>Duração:{trip.duration}</p>
+              <p>Duração:{trip.durationInDays}</p>
               <p>Data:{trip.date}</p>
             </CardTrip>
           </CardContainer>

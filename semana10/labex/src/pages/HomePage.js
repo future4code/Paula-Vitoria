@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { goToListTrips, goToLoginPage } from "../routes/coordinator";
 import styled from "styled-components";
 import Astronauta from "../components/img/Astronauta.jpg";
-import Font from "../utils/Font.css";
+
 
 const ButtonContainer = styled.div`
   & > button {

@@ -77,7 +77,7 @@ const TripDetailsPage = () => {
 
   useEffect(() => {
     getTrips();
-  }, [trip]);
+  }, [trip,getTrips()]);
 
   const decideCandidate = (tripId, candidateId) => {
     const body = {

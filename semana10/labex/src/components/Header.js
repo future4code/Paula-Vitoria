@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Font from "../utils/Font.css";
 
 const HeaderContainer = styled.div`
   display: flex;

@@ -1,0 +1,12 @@
+{
+  "name": "information",
+  "version": "1.0.0",
+  "description": "Informações pessoais",
+  "main": "information.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "informations": "node information.js"
+  },
+  "author": "Paula Lopes",
+  "license": "ISC"
+}
