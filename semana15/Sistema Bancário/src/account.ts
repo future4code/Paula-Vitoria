@@ -15,8 +15,8 @@ type extract = {
 export const users: userAccount[] = [
   {
     name: "Paula Lopes",
-    cpf: "03903371530",
-    birth: "22/08/1992",
+    cpf: "0241569874",
+    birth: "22/08/1996",
     balance: 320.0,
     spent: [
       { value: 200.0, date: "30/02/2020", description: "Aluguel" },
