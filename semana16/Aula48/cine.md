@@ -124,7 +124,7 @@ DELETE from Actor WHERE id="005"
 
 ###Exercío 3
 a)A query junta duas tabelas com a clausula JOIN e o ON traz justamente os valores correspondentes de uma tabela
-que estão relacionados na outra.
+que estão relacionados na outra tabela.
 b)
 
 ```
