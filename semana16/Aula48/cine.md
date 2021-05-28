@@ -14,6 +14,7 @@ VALUES(
 "003"
 );
 ```
+
 ```
 INSERT INTO Rating(id, comment, rate, movie_id)
 VALUES(
@@ -111,4 +112,22 @@ VALUES(
 );
 ```
 
-c)Erro: Não é possível adicionar ou atualizar uma linha filha: uma restrição de chave estrangeira falha. Em outras palavras, isso significa que não é possível atualizar ou adicionar uma foreign key que não foi criada, inexistente.
+c)Erro: Não é possível adicionar ou atualizar uma linha filha: uma restrição de chave estrangeira falha. Em outras palavras, isso significa que o banco foi na coluna de ator e não encontrou um id que representasse esse ator e, então,
+não conseguiu criar essa relação.
+
+d)Código de erro: 1451. Não é possível excluir ou atualizar uma linha pai: uma restrição de chave estrangeira.
+Nesse caso, não é possível excluir uma primary key que está associada a uma foreign key em outra tabela
+
+```
+DELETE from Actor WHERE id="005"
+```
+
+###Exercío 3
+a)A query junta duas tabelas com a clausula JOIN e o ON traz justamente os valores correspondentes de uma tabela
+que estão relacionados na outra.
+b)
+
+```
+SELECT title, movie_id, rate FROM Movies
+INNER JOIN Rating ON Movies.id = Rating.movie_id;
+```
