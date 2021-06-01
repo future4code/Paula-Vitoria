@@ -3,11 +3,11 @@ import selectUserByPagination from "../data/selectUserByPagination";
 export default async function getUserByPagination(req: Request, res: Response) {
   try {
     const page = Number(req.query.page) || 1;
-    const orderBy = req.query.orderBy as string;
-    const result = await selectUserByPagination(orderBy, page);
 
-    if (!result) {
-      throw new Error("User not found");
+    const result = await selectUserByPagination(page);
+
+    if (result.length === 0) {
+      throw new Error("Users not found");
     }
     res.status(200).send({ message: "sucesso!", result });
   } catch (err) {
