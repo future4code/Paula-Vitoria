@@ -1,10 +1,12 @@
 import { Request, Response } from "express";
 import selectUserByName from "../data/selectUserByName";
+import SelectUserByNameOrType from "../data/selectUserOrderByNameOrType";
 export default async function getUserByName(req: Request, res: Response) {
   try {
-    const name = req.query.name as string;
-    const result = await selectUserByName(name.toUpperCase());
-    console.log(result);
+    const orderBy = req.query.orderBy as string;
+    const orderType = req.query.orderType as string;
+    const result = await SelectUserByNameOrType(orderBy, orderType);
+   
     if (!result) {
       throw new Error("User not found");
     }
