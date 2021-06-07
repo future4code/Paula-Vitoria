@@ -66,5 +66,5 @@ export function getTokenData(token: string): authenticationData {
 ```
 
 ### Exercício 4
-//trmina
+//
 
