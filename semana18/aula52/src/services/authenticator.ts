@@ -1,8 +1,9 @@
 import * as jwt from "jsonwebtoken";
-type authenticationData = { id: string };
+import { USER_ROLES } from "../types";
+export type authenticationData = { id: string; role: USER_ROLES };
 
 export function generateToken(payload: authenticationData): string {
-  return jwt.sign({ payload }, process.env.JWT_KEY as string, {
+  return jwt.sign(payload, process.env.JWT_KEY as string, {
     expiresIn: "1y",
   });
 }
