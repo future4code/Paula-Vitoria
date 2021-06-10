@@ -23,3 +23,14 @@ CREATE TABLE IF NOT EXISTS to_do_list_assignees (
     FOREIGN KEY (task_id) REFERENCES to_do_list_tasks(id),
     FOREIGN KEY (assignee_id) REFERENCES to_do_list_users(id)
 );
+
+/*Script para criar tabela de endereço do usuário*/
+ CREATE TABLE user_address (
+ zip_code VARCHAR(255) NOT NULL,
+ street VARCHAR(255) NOT NULL,
+ number INT NOT NULL,
+ complement VARCHAR(255),
+ neighborhood VARCHAR(255) NOT NULL,
+ city VARCHAR(255) NOT NULL,
+ state VARCHAR(255) NOT NULL
+)
