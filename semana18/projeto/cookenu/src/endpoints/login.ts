@@ -3,7 +3,7 @@ import connection from "../connection";
 import { generateToken } from "../services/authenticator";
 import { userCredentials } from "../types";
 import { compare } from "../services/hashManager";
-import selectUser from "../data/selectUser";
+import selectUser from "../data/selectUserByEmail";
 
 export default async function login(
   req: Request,

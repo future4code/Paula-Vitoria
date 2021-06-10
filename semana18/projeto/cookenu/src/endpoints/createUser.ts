@@ -18,7 +18,7 @@ export default async function createUser(
     }
 
     const [user] = await connection("cookenu_users").where({ email });
-    console.log(user);
+
     if (user) {
       res.statusCode = 409;
       throw new Error("Email já cadastrado");
