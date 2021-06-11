@@ -11,3 +11,9 @@ title VARCHAR(255) NOT NULL,
 description TEXT NOT NULL,
 date DATE NOT NULL,
 );
+
+
+CREATE TABLE cookenu_users_followers(
+id_user VARCHAR(255) NOT NULL,
+id_follower VARCHAR(255) NOT NULL
+);
