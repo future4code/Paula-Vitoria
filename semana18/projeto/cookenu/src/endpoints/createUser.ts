@@ -14,14 +14,14 @@ export default async function createUser(
 
     if (!name || !email || !password) {
       res.statusCode = 422;
-      throw new Error("Preencha os campos 'name','password' and'email'");
+      throw new Error("'name','password' and'email' required");
     }
 
     const [user] = await connection("cookenu_users").where({ email });
 
     if (user) {
       res.statusCode = 409;
-      throw new Error("Email já cadastrado");
+      throw new Error("E-mail already registered");
     }
 
     const id: string = generateId();
