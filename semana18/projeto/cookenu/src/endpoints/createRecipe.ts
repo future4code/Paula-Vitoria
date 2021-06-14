@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import connection from "../connection";
 import generateId from "../services/idGenerator";
-import { authenticationData, user, userRole } from "../types";
+import { authenticationData } from "../types";
 import { getTokenData } from "../services/authenticator";
 import { recipe } from "../types";
 
@@ -20,12 +20,14 @@ export default async function createUser(
 
     const id: string = generateId();
 
+    const date = Intl.DateTimeFormat("pt-BR").format(new Date());
+
     const newRecipe: recipe = {
       id,
       title,
       description,
-      date: new Date(),
-      id_user:verifiedToken.id
+      date: date,
+      id_user: verifiedToken.id,
     };
 
     await connection("cookenu_recipes").insert(newRecipe);

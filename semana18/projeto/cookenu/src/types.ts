@@ -11,12 +11,11 @@ export type recipe = {
   id: string;
   title: string;
   description: string;
-  date: Date;
+  date: string;
   id_user: string;
 };
 
 export type user = {
-  //user ok
   id: string;
   name: string;
   email: string;

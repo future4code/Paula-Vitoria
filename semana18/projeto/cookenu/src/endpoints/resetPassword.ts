@@ -16,7 +16,8 @@ export default async function resetPassword(
     }
     const characteres = "abcdefABCDEF12345!?[]{}";
     let newPassword = "";
-    res.status(201).send();
+    // res.status(201).send();
+    // return;
     for (let i = 0; i < 10; i++) {
       const index = Math.floor(Math.random() * (characteres.length - 1));
       newPassword += characteres[index];
@@ -31,7 +32,7 @@ export default async function resetPassword(
       from: "linhavitoriaa@gmail.com",
       to: ["paulalopessantos28@gmail.com"],
       subject: "Reset Password",
-      text: `your new password is: ${newHash}`,
+      text: `Your new password is ${newPassword}`,
     });
 
     res.send("Email sended");
