@@ -22,7 +22,7 @@ app.post("/account/password", resetPassword);
 app.post("/recipe", createRecipe);
 app.post("/signup", createUser);
 app.post("/login", login);
-app.post("/user/follow", followUser); //tratar endpoint
+app.post("/user/follow", followUser); 
 app.post("/user/unfollow", unfollowUser);
 app.delete("/recipe/delete", deleteRecipe);
 app.delete("/account/user", deleteAccount);
