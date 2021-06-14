@@ -13,8 +13,3 @@ export enum USER_ROLES {
   NORMAL = "NORMAL",
   ADMIN = "ADMIN",
 }
-
-export type userAuthenticator = {
-  email: string;
-  password: string;
-};

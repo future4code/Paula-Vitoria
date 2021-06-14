@@ -1,19 +1,26 @@
-import insertUser from "../data/insertUser";
-import { userAuthenticator, userData } from "../model/user";
-import { generateId } from "../services/idGenerator";
-import { hash } from "../services/hashManager";
 import { generateToken } from "../services/authenticator";
 import selectUser from "../data/selectUser";
+import { compare } from "bcryptjs";
 export const loginBusiness = async (
-  userAuthenticator: userAuthenticator
+  email: string,
+  password: string
 ): Promise<string> => {
-  if (!userAuthenticator.email || !userAuthenticator.password) {
+  if (!email || !password) {
     throw new Error("'email'and 'password' must be passed");
   }
 
-  const user = await selectUser(userAuthenticator.email);
+  const user = await selectUser(email);
 
-  const token: string = generateToken({ id: user.id, role: userAuthenticator.role });
+  const validPassword: boolean = await compare(password, user.password);
+
+  if (!validPassword) {
+    throw new Error("Invalids Credentials");
+  }
+
+  const token: string = generateToken({
+    id: user.id,
+    role: user.role,
+  });
 
   return token;
 };
