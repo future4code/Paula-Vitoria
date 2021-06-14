@@ -30,7 +30,7 @@ export default async function resetPassword(
 
     await transporter.sendMail({
       from: "linhavitoriaa@gmail.com",
-      to: ["paulalopessantos28@gmail.com"],
+      to: [`${email}`],
       subject: "Reset Password",
       text: `Your new password is ${newPassword}`,
     });
