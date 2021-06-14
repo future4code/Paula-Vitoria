@@ -25,6 +25,7 @@ export default async function createUser(
       title,
       description,
       date: new Date(),
+      id_user:verifiedToken.id
     };
 
     await connection("cookenu_recipes").insert(newRecipe);

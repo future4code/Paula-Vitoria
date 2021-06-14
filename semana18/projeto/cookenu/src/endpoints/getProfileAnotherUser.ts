@@ -10,7 +10,6 @@ export default async function getProfileAnotherUser(
   try {
     const token = req.headers.authorization as string;
     const id = req.params.id;
-    console.log("id" + id);
 
     const verifiedToken = getTokenData(token) as authenticationData;
     console.log(verifiedToken);

@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import connection from "../connection";
 import { generateToken } from "../services/authenticator";
 import generateId from "../services/idGenerator";
-import { user, userRole } from "../types";
+import { user } from "../types";
 import { hash } from "../services/hashManager";
 
 export default async function createUser(
@@ -11,7 +11,7 @@ export default async function createUser(
 ): Promise<void> {
   try {
     const { name, email, password } = req.body;
-
+    const role = (req.body.role as string) || "NORMAL";
     if (!name || !email || !password) {
       res.statusCode = 422;
       throw new Error("'name','password' and'email' required");
@@ -33,10 +33,10 @@ export default async function createUser(
       name,
       email,
       password: cypherText,
+      role,
     };
 
     await connection("cookenu_users").insert(newUser);
-    const role = "NORMAL";
 
     const token: string = generateToken({ id, role });
 

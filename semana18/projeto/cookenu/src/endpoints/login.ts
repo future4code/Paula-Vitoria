@@ -1,7 +1,5 @@
 import { Request, Response } from "express";
-
 import { generateToken } from "../services/authenticator";
-
 import { compare } from "../services/hashManager";
 import selectUser from "../data/selectUserByEmail";
 

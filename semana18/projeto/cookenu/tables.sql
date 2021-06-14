@@ -10,10 +10,13 @@ id VARCHAR(255) NOT NULL PRIMARY KEY,
 title VARCHAR(255) NOT NULL,
 description TEXT NOT NULL,
 date DATE NOT NULL,
+id_user VARCHAR(255) NOT NULL;
+FOREIGN KEY (id_user) REFERENCES cookenu_users(id)
 );
-
 
 CREATE TABLE cookenu_users_followers(
 id_user VARCHAR(255) NOT NULL,
-id_follower VARCHAR(255) NOT NULL
+id_follower VARCHAR(255) NOT NULL,
+FOREIGN KEY (id_user) REFERENCES cookenu_users(id)
 );
+

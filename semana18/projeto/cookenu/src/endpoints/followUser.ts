@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { getTokenData } from "../services/authenticator";
 import { authenticationData } from "../types";
 import addFollower from "../data/addFollower";
-import connection from "../connection";
 import getNumbersOfFollowers from "../data/getNumbersOfFollowers";
 export default async function followUser(req: Request, res: Response) {
   try {
@@ -10,6 +9,9 @@ export default async function followUser(req: Request, res: Response) {
     const token = req.headers.authorization as string;
     const verifiedToken = getTokenData(token) as authenticationData;
 
+    if (!userToFollowId || !token) {
+      throw new Error("Id user to follow and token are required");
+    }
     if (!verifiedToken) {
       throw new Error("Invalid token");
     }
@@ -18,7 +20,7 @@ export default async function followUser(req: Request, res: Response) {
       verifiedToken.id,
       userToFollowId
     );
-    console.log(alredyIsFollower);
+
     if (alredyIsFollower > 0) {
       throw new Error("You already follow this user");
     }

@@ -11,7 +11,8 @@ export type recipe = {
   id: string;
   title: string;
   description: string;
-  date:Date
+  date: Date;
+  id_user: string;
 };
 
 export type user = {
@@ -20,4 +21,5 @@ export type user = {
   name: string;
   email: string;
   password: string;
+  role?: string;
 };
