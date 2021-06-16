@@ -1,21 +1,23 @@
-import { Request, Response } from "express"
-import { loginBusiness } from "../../business/user/loginBusiness"
+import { Request, Response } from "express";
+import { loginBusiness } from "../../business/user/loginBusiness";
+import { loginDTO } from "../../model/user";
 
-export const login = async (
-   req: Request,
-   res: Response
-): Promise<void> => {
-   try {
-      const { email, password } = req.body
+export const login = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { email, password } = req.body;
 
-      const token: string = await loginBusiness(email, password)
+    const userData: loginDTO = {
+      email,
+      password,
+    };
 
-      res.send({
-         message: "Usuário logado!",
-         token
-      })
+    const token: string = await loginBusiness(userData);
 
-   } catch (error) {
-      res.status(400).send(error.message)
-   }
-}
+    res.send({
+      message: "Usuário logado!",
+      token,
+    });
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};

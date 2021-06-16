@@ -1,3 +1,4 @@
+import { task } from "../../model/task";
 import { connection } from "../connection";
 
 export const selectTaskById = async (
