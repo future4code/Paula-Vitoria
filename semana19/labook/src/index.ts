@@ -7,5 +7,3 @@ import { app } from "./controller/app";
 app.use("/users", userRouter)
 app.use("/posts",postRouter)
 
-
-
