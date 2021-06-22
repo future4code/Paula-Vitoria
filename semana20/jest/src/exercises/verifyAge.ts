@@ -1,4 +1,4 @@
-import { Casino, NACIONALITY } from "../models/verifyAgeModel";
+import { Casino, LOCATION, NACIONALITY } from "../models/verifyAgeModel";
 import { User, Result, ResultItem } from "../models/verifyAgeModel";
 
 const user1: User = {
@@ -25,6 +25,10 @@ const user4: User = {
   nacionality: NACIONALITY.AMERICAN,
 };
 
+const casinoSalvador: Casino = {
+  name: "salvador",
+  location: LOCATION.BRAZIL,
+};
 const usersCasino: User[] = [];
 usersCasino.push(user1);
 usersCasino.push(user2);
@@ -54,8 +58,22 @@ export const verifyAge = (casino: Casino, users: User[]) => {
     }
   }
 
-  const allowedNames: User[] = [];
-  const unallowedNames: User[] = [];
-  console.log(allowed);
-  console.log(unallowed);
+  return {
+    brazilians: {
+      allowed: allowed
+        .filter((user) => user.nacionality === NACIONALITY.BRAZILIAN)
+        .map((u) => u.name),
+      unallowed: unallowed
+        .filter((user) => user.nacionality === NACIONALITY.BRAZILIAN)
+        .map((u) => u.name),
+    },
+    americans: {
+      allowed: allowed
+        .filter((user) => user.nacionality === NACIONALITY.AMERICAN)
+        .map((u) => u.name),
+      unallowed: unallowed
+        .filter((user) => user.nacionality === NACIONALITY.AMERICAN)
+        .map((u) => u.name),
+    },
+  };
 };

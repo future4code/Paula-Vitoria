@@ -1,8 +1,8 @@
 import { User } from "../src/models/modelCanBuy";
 import { canBuy } from "../src/exercises/canBuy";
 //testeSuite
-describe("Testing our function canBuy", () => {
-  test("Testing balance greater than value ", () => {
+describe("Testing our function VerifyAge", () => {
+  test("Testing user brazilian in a casino in Brazil ", () => {
     const user: User = {
       name: "Paula",
       balance: 500,
