@@ -8,7 +8,8 @@ export const getPostById = async (req: Request, res: Response) => {
 
     const { id } = req.params;
 
-    const post = getPostByIdBusiness(id);
+    const post = await getPostByIdBusiness(id);
+    console.log(post);
     res.status(200).send({ message, post });
   } catch (error) {
     let message = error.sqlMessage || error.message;
