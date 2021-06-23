@@ -1,9 +1,12 @@
 import { CustomError } from "../errors/CustomError";
-import { User, stringToUserRole } from "../model/User";
+import { User, stringToUserRole, USER_ROLES } from "../model/User";
 import userDatabase, { UserDatabase } from "../data/UserDatabase";
 import hashGenerator, { HashGenerator } from "../services/hashGenerator";
 import idGenerator, { IdGenerator } from "../services/idGenerator";
-import tokenGenerator, { TokenGenerator } from "../services/tokenGenerator";
+import tokenGenerator, {
+  AuthenticationData,
+  TokenGenerator,
+} from "../services/tokenGenerator";
 
 export class UserBusiness {
   constructor(
@@ -102,6 +105,37 @@ export class UserBusiness {
       throw new CustomError(err.statusCode, err.message);
     }
   }
+
+  public async getAllUsers(token: string) {
+    try {
+      const verifiedToken = this.tokenGenerator.verify(
+        token
+      ) as AuthenticationData;
+
+      if (!verifiedToken) {
+        throw new CustomError(422, "Missing or invalid token");
+      }
+      if (verifiedToken.role !== "ADMIN") {
+        throw new CustomError(402, "Only admins can acces this resource");
+      }
+      console.log("very", verifiedToken);
+
+      const users = await this.userDatabase.getAllUsers();
+
+      if (users.length === 0) {
+        throw new CustomError(404, "Users not found");
+      }
+
+      return users;
+    } catch (err) {
+      throw new CustomError(err.statusCode, err.message);
+    }
+  }
 }
 
-export default new UserBusiness(idGenerator, hashGenerator, userDatabase,tokenGenerator);
+export default new UserBusiness(
+  idGenerator,
+  hashGenerator,
+  userDatabase,
+  tokenGenerator
+);

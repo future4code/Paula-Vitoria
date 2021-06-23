@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
+import UserBusiness from "../business/UserBusiness";
 import userBusiness from "../business/UserBusiness";
+import UserDatabase from "../data/UserDatabase";
 import { User } from "../model/User";
 
 export class UserController {
@@ -32,6 +34,18 @@ export class UserController {
       res.status(200).send(result);
     } catch (err) {
       res.status(400).send();
+    }
+  }
+
+  public async getAllUsers(req: Request, res: Response) {
+    try {
+      const token = req.headers.authorization as string;
+
+      const result = await UserBusiness.getAllUsers(token);
+      console.log(result);
+      res.status(200).send(result);
+    } catch (err) {
+      res.status(400).send(err.message);
     }
   }
 }
