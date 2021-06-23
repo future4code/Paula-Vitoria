@@ -1,5 +1,3 @@
-import bcrypt from "bcryptjs";
-
 export class HashGeneratorMock {
   public hash = async (s: string): Promise<any> => {
     return s;

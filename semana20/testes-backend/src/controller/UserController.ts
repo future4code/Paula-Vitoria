@@ -28,7 +28,7 @@ export class UserController {
   public async getUserById(req: Request, res: Response) {
     try {
       const { id } = req.params;
-      const result: User = await userBusiness.getUserById(id);
+      const result: User | undefined = await userBusiness.getUserById(id);
       res.status(200).send(result);
     } catch (err) {
       res.status(400).send();

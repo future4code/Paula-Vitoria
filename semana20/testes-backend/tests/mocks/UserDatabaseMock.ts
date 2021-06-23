@@ -1,7 +1,7 @@
 import { User } from "../../src/model/User";
 import { userMockAdmin, userMockNormal } from "./UserMock";
 
-export class UserDatabase {
+export class UserDatabaseMock {
   public async createUser(user: User): Promise<void> {}
 
   public async getUserByEmail(email: string): Promise<User | undefined> {
@@ -27,9 +27,8 @@ export class UserDatabase {
   }
 
   public async getAllUsers(): Promise<User[]> {
-
-    return [userMockAdmin,userMockNormal]
+    return [userMockAdmin, userMockNormal];
   }
 }
 
-export default new UserDatabase();
+export default new UserDatabaseMock();
