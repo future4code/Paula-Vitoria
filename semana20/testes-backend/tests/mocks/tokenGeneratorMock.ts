@@ -6,7 +6,7 @@ export class TokenGeneratorMock {
   };
 
   public verify(token: string) {
-    const result = { id: "id_mock", role: USER_ROLES.NORMAL };
+    const result = { id: "id_mock", role: USER_ROLES.ADMIN};
     return result;
   }
 }

@@ -4,7 +4,8 @@ import hashGeneratorMock from "./mocks/hashGeneratorMock";
 import idGeneratorMock from "./mocks/idGeneratorMock";
 import tokenGeneratorMock from "./mocks/tokenGeneratorMock";
 import userDatabaseMock from "./mocks/UserDatabaseMock";
-import { userMockNormal } from "./mocks/UserMock";
+import { userMockAdmin, userMockNormal } from "./mocks/UserMock";
+import { USER_ROLES } from "../src/model/User";
 
 const userBusinessMock = new UserBusiness(
   idGeneratorMock,
@@ -33,5 +34,40 @@ describe("User Business", () => {
         console.log(err.message);
       }
     });
+  });
+
+  describe("Function getAllUsers", () => {
+    test("Unhoutorized Error", async () => {
+      try {
+        await userBusinessMock.getAllUsers("token_mock");
+      } catch (err) {
+        expect(err.statusCode).toBe(402);
+        expect(err.message).toBe("Only admins can acces this resource");
+      }
+    });
+  });
+
+  test("Return of success", async () => {
+    try {
+      const getAllUsers = jest.fn((role: USER_ROLES) =>
+        userBusinessMock.getAllUsers(role)
+      );
+
+      const users = await getAllUsers(USER_ROLES.ADMIN);
+      expect(users).toContainEqual({
+        id: "id_mock_admin",
+        name: "paula",
+        email: "paula@gmail.com",
+        role: "ADMIN",
+      });
+      expect(users).toContainEqual({
+        id: "id_mock_normal",
+        name: "elvis",
+        email: "elvis@gmail.com",
+        role: "NORMAL",
+      });
+    } catch (err) {
+      console.log(err);
+    }
   });
 });
