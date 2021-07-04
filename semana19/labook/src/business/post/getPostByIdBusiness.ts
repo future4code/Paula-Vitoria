@@ -7,14 +7,14 @@ export const getPostByIdBusiness = async (id: string) => {
     throw new Error("Post not found");
   }
 
-  /* const post: post = {
+  const post: post = {
     id: queryResult.id,
     photo: queryResult.photo,
     description: queryResult.description,
     type: queryResult.type,
-    createdAt: queryResult.created_at,
-    authorId: queryResult.author_id,
+    created_at: queryResult.created_at,
+    author_id: queryResult.author_id,
   };
 
-  return post;*/
+  return post;
 };
